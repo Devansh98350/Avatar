@@ -402,7 +402,7 @@ export default function HomePage() {
               <div
                 className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2"
                 style={{
-                  maxHeight: "450px",
+                  maxHeight: "510px",
                   overflowY: "auto",
                   scrollbarWidth: "thin",
                 }} // Enable auto scrollbar visibility
@@ -425,8 +425,8 @@ export default function HomePage() {
                       className="w-full h-auto object-cover rounded-lg"
                     />
                     <p
-                      className="text-center text-black mb-[-2]"
-                      style={{ fontSize: "10px" }}
+                      className="text-center text-black font-bold"
+                      style={{ fontSize: "11px" }}
                     >
                       {prompt.name}
                     </p>
@@ -434,9 +434,12 @@ export default function HomePage() {
                 ))}
               </div>
 
-              <div className="flex justify-center mt-6">
+              <div
+                className="flex justify-center mt-2"
+                style={{ fontSize: "10px" }}
+              >
                 <button
-                  className={`px-6 py-2 ${
+                  className={`px-6 py-1  ${
                     hasMoreImages()
                       ? "bg-blue-600 cursor-pointer"
                       : "bg-blue-600 cursor-not-allowed"
@@ -556,7 +559,7 @@ export default function HomePage() {
                 <div className="mb-8 h-[80px] bg-[#35383d]">
                   <div className="space-y-4">
                     {/* Models and Aspect Ratio in One Row */}
-                    <div className="flex justify-center items-center space-x-4">
+                    <div className="flex justify-center items-center space-x-1">
                       {/* Models Dropdown */}
                       <div className="relative">
                         <button
@@ -604,7 +607,7 @@ export default function HomePage() {
                         >
                           <span className="mr-0 text-sm">Aspect Ratio</span>
                           <div
-                            className="px-1 py-[-1] text-white rounded-0 text-sm ml-1 border-2 border-white"
+                            className="px-1 py-[-1] text-blue-400 rounded-0 text-sm ml-1"
                             style={{ backgroundColor: "#24272c" }}
                           >
                             {selectedAspectRatioLabel}
@@ -733,18 +736,18 @@ export default function HomePage() {
                 {/* Footer Buttons */}
                 {generatedImage && (
                   <div
-                    className="flex space-x-4 p-4"
+                    className="flex justify-center space-x-4 p-4"
                     style={{ backgroundColor: "#24272c" }}
                   >
                     <button
                       onClick={handleDownload}
-                      className="w-1/2 bg-blue-600 text-white py-2 rounded-full hover:bg-blue-700 transition-colors"
+                      className="w-auto bg-blue-600 text-white px-5 py-2 text-[15px] rounded-full hover:bg-blue-700 transition-colors"
                     >
                       Download Image
                     </button>
                     <button
                       onClick={handleGenerateNewImage}
-                      className="w-1/2 bg-green-600 text-white py-2 rounded-full hover:bg-green-700 transition-colors"
+                      className="w-auto bg-green-600 text-[15px] text-white  px-5 py-2 rounded-full hover:bg-green-700 transition-colors"
                     >
                       Generate New Image
                     </button>
@@ -771,7 +774,7 @@ export default function HomePage() {
                           setLoading
                         ); // Make sure session and user email are available
                       }}
-                      className={`p-4 text-white py-2 rounded-lg transition-colors ${
+                      className={`p-4 text-white py-2 text-[15px] rounded-3xl transition-colors ${
                         isGenerating
                           ? "bg-blue-600 cursor-not-allowed"
                           : "bg-blue-600 hover:bg-blue-700"
