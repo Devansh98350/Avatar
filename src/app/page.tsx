@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import "./globals.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
@@ -202,7 +204,9 @@ export default function HomePage() {
 
   const handleGenerate = async () => {
     if (uploadedImages.length === 0 || !positivePrompt) {
-      alert("Please upload an image and enter positive/negative prompts.");
+      toast.error(
+        "Please upload an image and select one form recommended images."
+      );
       return;
     }
 
@@ -369,7 +373,7 @@ export default function HomePage() {
                           : category.name.toLowerCase().replace(/\s+/g, "-")
                       }.png`}
                       alt={`${category.name} icon`}
-                      className="w-9 h-10"
+                      className="w-8 h-10"
                     />
                     <span
                       className={`text-[0.625rem] ${
@@ -421,22 +425,26 @@ export default function HomePage() {
                   </div>
                 ))}
               </div>
-              {hasMoreImages() && (
-                <div className="flex justify-center mt-6">
-                  <button
-                    className="px-6 py-2 bg-blue-600 text-white rounded-full"
-                    onClick={handleLoadMore}
-                  >
-                    Load more
-                  </button>
-                </div>
-              )}
+
+              <div className="flex justify-center mt-6">
+                <button
+                  className={`px-6 py-2 ${
+                    hasMoreImages()
+                      ? "bg-blue-600 cursor-pointer"
+                      : "bg-blue-600 cursor-not-allowed"
+                  } text-white rounded-full`}
+                  onClick={hasMoreImages() ? handleLoadMore : undefined}
+                  disabled={!hasMoreImages()}
+                >
+                  Load more
+                </button>
+              </div>
             </div>
           </div>
 
           {/* Right Side Panel */}
           <div
-            className="w-3/5  border-2 border-dashed border-gray-300 shadow-lg rounded-3xl flex flex-col mr-5 ml-5"
+            className="w-3/5  mx-auto border-2 border-dashed border-gray-300 shadow-lg rounded-3xl flex flex-col mr-5 ml-5"
             style={{
               backgroundColor: "#24272c",
               color: "#ffffff",
