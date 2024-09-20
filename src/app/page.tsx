@@ -19,6 +19,7 @@ interface Prompt {
   id: string;
   src: string;
   alt: string;
+  name: string;
 }
 
 interface Category {
@@ -119,6 +120,7 @@ export default function HomePage() {
                   ? imgData["Image URL"]
                   : `/${imgData["Image URL"]}`,
                 alt: imgData["Prompt"],
+                name: imgData["Name"],
               });
             });
           }
@@ -422,6 +424,12 @@ export default function HomePage() {
                       height={90}
                       className="w-full h-auto object-cover rounded-lg"
                     />
+                    <p
+                      className="text-center text-black mb-[-2]"
+                      style={{ fontSize: "10px" }}
+                    >
+                      {prompt.name}
+                    </p>
                   </div>
                 ))}
               </div>
